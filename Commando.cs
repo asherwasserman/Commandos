@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commandos
+namespace Commandos.models
 {
     public class Commando
     {
@@ -22,17 +23,19 @@ namespace Commandos
 
         public void Walk()
         {
-
+            Console.WriteLine("The soldier goes");
+            this.status = "walking";
         }
 
         public void Hide()
         {
-
+            Console.WriteLine("The soldier is hiding ");
+            this.status = "hiding";
         }
 
         public void Attack()
         {
-
+            Console.WriteLine($"The soldier: {this.name} attacks");
         }
     }
 }
