@@ -9,10 +9,10 @@ namespace Commandos.models
 {
     public class Commando
     {
-        public string name;
-        public string codeName;
-        public string[] tools = new string[5];
-        public string status;
+        private string name;
+        private string codeName { get; set;}
+        private string[] tools = new string[5];
+        private string status;
         public Commando(string Name, string CodeName, string[] Tools, string Status)
         {
             name = Name;
@@ -29,13 +29,33 @@ namespace Commandos.models
 
         public void Hide()
         {
-            Console.WriteLine("The soldier is hiding ");
+            Console.WriteLine("The soldier is hiding");
             this.status = "hiding";
         }
 
         public void Attack()
         {
             Console.WriteLine($"The soldier: {this.name} attacks");
+        }
+
+        public string SayName()
+        {
+            Console.WriteLine("What is your rank? ");
+            string runk = Console.ReadLine();
+
+            if (runk == "General")
+            {
+                return this.name;
+            }
+            else if (runk == "colonel")
+            {
+                return this.codeName;
+            }
+            else
+            {
+                string name = "Cannot accept the name without required classification";
+                return name;
+            }
         }
     }
 }
