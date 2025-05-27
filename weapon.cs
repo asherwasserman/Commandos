@@ -21,7 +21,15 @@ namespace Commandos
 
         public void Shoot()
         {
-
+            if (numberOfBalls > 0)
+            {
+                Console.WriteLine("a shot");
+                this.numberOfBalls -= 1;
+            }
+            else
+            {
+                Console.WriteLine("We're out of bullets.");
+            }
         }
 
     }
