@@ -10,7 +10,7 @@ namespace Commandos.models
     public class Commando
     {
         private string name;
-        private string codeName { get; set;}
+        public string codeName { get; set;}
         private string[] tools = new string[5];
         private string status;
         public Commando(string Name, string CodeName, string[] Tools, string Status)
@@ -33,15 +33,15 @@ namespace Commandos.models
             this.status = "hiding";
         }
 
-        public void Attack()
+        public virtual void Attack()
         {
-            Console.WriteLine($"The soldier: {this.name} attacks");
+            Console.WriteLine("Commando soldier attacks");
         }
 
         public string SayName()
         {
             Console.WriteLine("What is your rank? ");
-            string runk = Console.ReadLine();
+            string runk = Console.ReadLine()!;
 
             if (runk == "General")
             {
@@ -56,6 +56,30 @@ namespace Commandos.models
                 string name = "Cannot accept the name without required classification";
                 return name;
             }
+        }
+
+        public class AirCommando : Commando
+        {
+            public AirCommando (string Name, string CodeName, string[] Tools, string Status)
+                : base (Name, CodeName, Tools, Status) { }
+
+            public override void Attack()
+            {
+                Console.WriteLine("Air commando soldier attacks!");
+            }
+
+        }
+
+        public class SeaCommando : Commando
+        {
+            public SeaCommando(string Name, string CodeName, string[] Tools, string Status)
+                : base(Name, CodeName, Tools, Status) { }
+
+            public override void Attack()
+            {
+                Console.WriteLine($"Sea commando soldier attacks!");
+            }
+
         }
     }
 }
